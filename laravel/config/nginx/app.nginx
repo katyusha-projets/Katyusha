@@ -1,0 +1,117 @@
+
+server {
+    server_name                 _;
+    listen                      80 default_server;
+    root                        /srv/app/app;
+    client_max_body_size        100M;
+    large_client_header_buffers 4 32k;
+    set_real_ip_from            192.168.1.4;
+    real_ip_header              X-Forwarded-For;
+    merge_slashes               off;
+    proxy_buffer_size           128k;
+    proxy_buffers               4 256k;
+    proxy_busy_buffers_size     256k;
+
+    #location ~* \.(ts|ogg|ogv|svg|svgz|eot|otf|woff|ttf|rss|atom|jpg|jpeg|gif|png|ico|bmp|woff|woff2|ttf|jpg|jpeg|gif|png|ico|svg|css|js)$ { try_files $uri =404; }
+
+    location / {
+        #index  index.html index.htm;
+        #try_files $uri $uri/ =404;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP  $remote_addr;
+        proxy_set_header X-Forwarded-For $remote_addr;
+
+        proxy_pass http://localhost:3333;
+
+        # Reference for serving Websockets: https://www.nginx.com/blog/websocket-nginx/
+        #proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        #proxy_redirect off;
+
+        # Reference for Nginx config: https://gist.github.com/plentz/6737338
+        #add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://dev.nein.app https://ssl.google-analytics.com https://assets.zendesk.com https://connect.facebook.net; img-src 'self' https://ssl.google-analytics.com https://s-static.ak.facebook.com https://assets.zendesk.com; style-src 'self' 'unsafe-inline' https://dev.nein.app https://fonts.googleapis.com https://assets.zendesk.com; font-src 'self' https://themes.googleusercontent.com; frame-src https://assets.zendesk.com https://www.facebook.com https://s-static.ak.facebook.com https://tautt.zendesk.com; object-src 'none'";
+    }
+
+}
+
+
+
+server {
+    server_name                 api.katyusha.ch;
+    root                        /srv/app/server/public;
+    client_max_body_size        100M;
+    large_client_header_buffers 4 32k;
+    set_real_ip_from            192.168.1.4;
+    real_ip_header              X-Forwarded-For;
+    merge_slashes               off;
+    proxy_buffer_size           128k;
+    proxy_buffers               4 256k;
+    proxy_busy_buffers_size     256k;
+    index                       index.php;
+
+    listen 443 ssl;
+    ssl_certificate /etc/letsencrypt/live/api.katyusha.ch/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/api.katyusha.ch/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+    location ^~ /media/ {
+        root /srv/app/server/storage;
+    }
+
+    location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|ttf|rss|atom|jpg|jpeg|gif|png|ico|bmp|woff|woff2|ttf|jpg|jpeg|gif|png|ico|svg|css|js)$ { try_files $uri =404; }
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/php-fpm-app.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+
+
+server {
+    server_name                 api.katyusha.ch;
+    listen                      80;
+    root                        /srv/app/server/public;
+    client_max_body_size        100M;
+    large_client_header_buffers 4 32k;
+    set_real_ip_from            192.168.1.4;
+    real_ip_header              X-Forwarded-For;
+    merge_slashes               off;
+    proxy_buffer_size           128k;
+    proxy_buffers               4 256k;
+    proxy_busy_buffers_size     256k;
+    index                       index.php;
+
+    location ^~ /media/ {
+        root /srv/app/server/storage;
+    }
+
+    location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|ttf|rss|atom|jpg|jpeg|gif|png|ico|bmp|woff|woff2|ttf|jpg|jpeg|gif|png|ico|svg|css|js)$ { try_files $uri =404; }
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/php-fpm-app.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+

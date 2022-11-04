@@ -1,0 +1,8 @@
+{
+    "name": "applications/foodly",
+    "autoload": {
+        "psr-4": {
+            "Foodly\\": "src/"
+        }
+    }
+}

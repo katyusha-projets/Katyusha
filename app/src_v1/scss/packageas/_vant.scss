@@ -1,0 +1,50 @@
+.van-tabs__wrap {
+  margin-bottom: 0.6rem;
+  border-radius: 4px;
+  background: #FFF;
+
+  .van-tabs__nav {
+    background: transparent;
+
+    .van-tab {
+
+      .van-tab__text {
+        color: #000;
+        font-size: 1rem;
+        letter-spacing: 0.1rem;
+      }
+    }
+  }
+
+  .van-tabs__line {
+    width: 11px;
+    bottom: 4px;
+    background: var(--button-primary-bg-color);
+  }
+}
+
+@media(max-width: 640px) {
+  .van-submit-bar__bar {
+    flex-wrap: wrap;
+    height: 174px;
+    box-shadow: 0 0 10px -4px #c1c0d3;
+    padding-bottom: 5rem;
+
+    .van-button {
+      width: 100%;
+    }
+  }
+}
+
+.van-button {
+  color: var(--button-primary-color);
+  background: var(--button-primary-bg-color);
+  border-color: var(--button-primary-border-color);
+
+  &:hover {
+    color: var(--button-primary-color);
+    border-color: var(--button-primary-border-color-hover);
+    background: var(--button-primary-bg-color-hover);
+    box-shadow: var(--primary-box-shadow);
+  }
+}

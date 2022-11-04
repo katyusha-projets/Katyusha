@@ -1,0 +1,8 @@
+{
+    "name": "applications/lead-finder",
+    "autoload": {
+        "psr-4": {
+            "LeadFinder\\": "src/"
+        }
+    }
+}

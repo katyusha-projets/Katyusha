@@ -1,0 +1,29 @@
+@font-face {
+    font-family: "Ambient";
+    src: url("ambient-medium-webfont.woff2") format("woff2"), url("ambient-medium-webfont.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Ambient";
+    src: url("ambient-medium-webfont.woff2") format("woff2"), url("ambient-medium-webfont.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Ambient";
+    src: url("ambient-medium-webfont.woff2") format("woff2"), url("ambient-medium-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+h1, .heading, h2 {
+  font-family: "Ambient", sans-serif;
+}
+
+
+
+h1 span, .heading span {
+  font-family: "Ambient", sans-serif;
+}

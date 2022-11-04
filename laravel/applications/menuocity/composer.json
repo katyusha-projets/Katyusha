@@ -1,0 +1,8 @@
+{
+    "name": "applications/menuocity",
+    "autoload": {
+        "psr-4": {
+            "Menuocity\\": "src/"
+        }
+    }
+}

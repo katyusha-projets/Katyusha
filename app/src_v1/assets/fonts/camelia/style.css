@@ -1,0 +1,57 @@
+@font-face {
+    font-family: 'Camelia';
+    src: url('rnscamelia-black-webfont.woff2') format('woff2'),
+         url('rnscamelia-black-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Camelia';
+    src: url('rnscamelia-bold-webfont.woff2') format('woff2'),
+         url('rnscamelia-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Camelia';
+    src: url('rnscamelia-extrabold-webfont.woff2') format('woff2'),
+         url('rnscamelia-extrabold-webfont.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Camelia';
+    src: url('rnscamelia-light-webfont.woff2') format('woff2'),
+         url('rnscamelia-light-webfont.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Camelia';
+    src: url('rnscamelia-medium-webfont.woff2') format('woff2'),
+         url('rnscamelia-medium-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Camelia';
+    src: url('rnscamelia-regular-webfont.woff2') format('woff2'),
+         url('rnscamelia-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+h1, h2, .heading, .title {
+  font-family: "Camelia", sans-serif;
+}

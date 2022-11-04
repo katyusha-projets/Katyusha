@@ -1,0 +1,12 @@
+/* Webfont: Edingu-Italic */@font-face {
+    font-family: 'Edingu';
+    src: url('Edingu-Italic.eot'); /* IE9 Compat Modes */
+    src: url('Edingu-Italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Edingu-Italic.woff') format('woff'), /* Modern Browsers */
+         url('Edingu-Italic.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Edingu-Italic.svg#Edingu-Italic') format('svg'); /* Legacy iOS */
+    font-style: italic;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+

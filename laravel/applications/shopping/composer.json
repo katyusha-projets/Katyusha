@@ -1,0 +1,8 @@
+{
+    "name": "applications/shopping",
+    "autoload": {
+        "psr-4": {
+            "Shopping\\": "src/"
+        }
+    }
+}

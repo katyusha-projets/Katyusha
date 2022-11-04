@@ -1,0 +1,43 @@
+@font-face {
+  font-family: "Function Pro";
+  src: url("./functionpro-bold-webfont.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Function Pro";
+  src: url("./functionpro-book-webfont.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Function Pro";
+  src: url("./functionpro-demi-webfont.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "Function Pro";
+  src: url("./functionpro-medium-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "Function Pro";
+  src: url("./functionpro-light-webfont.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+html, body, p, span, div {
+  font-family: "Function Pro", sans-serif;
+}
+
+/*# sourceMappingURL=averta.css.map */

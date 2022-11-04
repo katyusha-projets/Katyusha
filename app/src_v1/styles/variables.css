@@ -1,0 +1,44 @@
+:root {
+  --font-family: "Averta", sans-serif;
+
+  --color-red:#ff2d43;
+  --color-green:#34e64d;
+  --color-purple:#3c1286;
+  --color-blue:#054ddb;
+
+  --color-button:#000;
+
+  --ua-blue:#0057B8;
+  --ua-yellow:#FFD700;
+
+  --bg-dark:#08041c;
+  --bg-cream:#f8f6f1;
+
+
+
+  --primary: var(--color-purple);
+  --primary-dark: #2c0a68;
+  --primary-darker: #1b0640;
+  --primary-black: #0c021d;
+
+  --secondary: var(--color-red);
+  --tertiary: var(--color-blue);
+
+  /*--primary: var(--ua-blue);*/
+  /*--secondary: var(--ua-yellow);*/
+  /*--tertiary: var(--bg-dark);*/
+
+
+  --header-height:68px;
+  --logo-height:48px;
+  --hero-height:68vh;
+  --header-search-width: 320px;
+
+
+  --input-height:42px;
+  --button-height:var(--input-height);
+
+
+  --card-horizontal-image-width: 200px;
+  --card-horizontal-compact-image-width: 80px;
+}

@@ -1,0 +1,29 @@
+.white_wave {
+  position: absolute;
+  bottom: -3px;
+  left: -4px;
+  right: 0;
+  width: calc(100% + 8px) !important;
+  max-width: calc(100% + 8px) !important;
+  z-index: 100;
+}
+
+.el-page-header__left {
+  display:none;
+}
+
+input, select {
+  height: var(--input-height);
+  line-height: var(--input-height);
+}
+
+
+/* Table */
+#app .el-table th.el-table__cell, #app .el-table:not(.el-table--border) .el-table__cell {
+  color:#000;
+  border:none !important;
+}
+
+.el-table {
+  border:none !important;
+}

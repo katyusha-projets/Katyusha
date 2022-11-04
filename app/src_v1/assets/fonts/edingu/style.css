@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Edingu';
+  src: url('Edingu-Regular.woff') format('woff'),
+  url('Edingu-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+h1, h2, .heading, .title {
+  font-family: "Edingu", sans-serif;
+}
+
