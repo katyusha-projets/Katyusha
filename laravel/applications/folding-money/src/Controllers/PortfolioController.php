@@ -16,8 +16,8 @@ class PortfolioController extends Controller {
         return Portfolio::query()->get()->jsonResponse();
     }
 
-    public function show(string $namespace): JsonResponse {
-        return Portfolio::whereNamespace($namespace)->first()->jsonResponse();
+    public function show(string $id): JsonResponse {
+        return Portfolio::where('id', $id)->with('user')->first()?->jsonResponse();
     }
 
     public function create(Request $request): JsonResponse {

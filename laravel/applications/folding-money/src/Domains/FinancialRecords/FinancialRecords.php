@@ -21,11 +21,11 @@ final class FinancialRecords extends MongodbModel {
         return 'financial_records:'.mb_strtoupper($ticker);
     }
 
-    public static function fetch(string $ticker): ?object {
+    public static function fetch(string $ticker): ?ParsedFinancialRecords {
         $cacheKey = self::cacheKey($ticker);
 
         if ($existing = Cache::get($cacheKey)) {
-            return json_decode($existing);
+            return new ParsedFinancialRecords(json_decode($existing));
         }
 
         $tickerRecord  = Ticker::getByTicker($ticker);
@@ -38,7 +38,7 @@ final class FinancialRecords extends MongodbModel {
         $data = json_encode($record->data);
         Cache::add($cacheKey, $data);
 
-        return json_decode($data);
+        return new ParsedFinancialRecords(json_decode($existing));
     }
 
     public static function run(string|Ticker $ticker): void {

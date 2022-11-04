@@ -9,6 +9,7 @@ use FoldingMoney\Domains\Tickers\Ticker;
 use Katyusha\Infrastructure\Eloquent\Model;
 use Overtrue\LaravelFollow\Traits\Followable;
 use Katyusha\Infrastructure\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Katyusha\Infrastructure\Eloquent\Traits\ModelHasNamespaceTrait;
@@ -27,8 +28,12 @@ class Portfolio extends Model {
 
     protected $table   = 'finance.portfolios';
     protected $guarded = [];
-    protected $appends = ['totals', 'market_cap'];
-    protected $with    = ['user', 'tickers'];
+    protected $appends = [];
+    protected $with    = ['tickers'];
+
+    public function image(): Attribute {
+        return Attribute::make(get: static fn (?string $value) => self::mediaUrl($value));
+    }
 
     public function getMarketCapAttribute(): int {
         return _::arrayPropertySum($this->tickers, 'market_cap');

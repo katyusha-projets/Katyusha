@@ -19,6 +19,7 @@ class PortfolioResource extends FoldingMoneyResource {
     public function fields(Request $request) {
         return Form::make($request)
             ->text('name')
+            ->image('image')
 //            ->displayOwner()
             ->belongsToMany('Tickers', TickerResource::class)
             ->toArray();

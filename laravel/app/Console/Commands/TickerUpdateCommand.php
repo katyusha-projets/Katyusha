@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use FoldingMoney\Domains\Tickers\Ticker;
 use FoldingMoney\Domains\FinancialRecords\FinancialRecords;
 
 class TickerUpdateCommand extends Command {
@@ -11,5 +12,6 @@ class TickerUpdateCommand extends Command {
 
     public function handle() {
         FinancialRecords::run('aapl');
+//        Ticker::createUpdatingJobs();
     }
 }

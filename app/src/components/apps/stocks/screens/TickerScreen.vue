@@ -42,13 +42,16 @@ data.indexes.forEach((index: StockIndexType) => {
   indexesIsPartOf.value.push(index.id)
 })
 
-watch(props, async () => {
-  data = await service.get(`${props.ticker}`)
-})
+const
 
 watch(indexesIsPartOf, () => {
   stockService.setIndexes(data.id, indexesIsPartOf.value)
 })
+
+watch(props, async () => {
+  data = await service.get(`${props.ticker}`)
+})
+
 </script>
 
 <template>

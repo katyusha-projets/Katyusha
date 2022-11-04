@@ -5,6 +5,7 @@ namespace App\Models;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
+use Katyusha\Infrastructure\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Katyusha\Infrastructure\Eloquent\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -62,5 +63,9 @@ class User extends Authenticatable {
 
     public function avatar(): Attribute {
         return Attribute::make(get: static fn (?string $value) => self::mediaUrl($value));
+    }
+
+    public static function usernameQuery(string $username): Builder {
+        return static::where('username', $username);
     }
 }

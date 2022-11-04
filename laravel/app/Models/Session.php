@@ -30,6 +30,10 @@ class Session extends Model {
 
     protected static string $sessionCookieName = '_s';
 
+    public static function currentUser(): ?User {
+        return User::where('username', 'katyusha')->first();
+    }
+
     protected static function getSessionCookie(): ?string {
         $encrypted = Cookie::get(self::$sessionCookieName);
 

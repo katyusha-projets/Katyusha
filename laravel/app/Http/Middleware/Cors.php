@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Throwable;
 use Illuminate\Support\Facades\Response;
 
 class Cors {
@@ -24,10 +25,14 @@ class Cors {
                 ->header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, X-Token-Auth, Authorization, x-xsrf-token, domain');
         }
 
-        return $next($request)
-            ->header('Access-Control-Allow-Origin', $referrer)
-            ->header('Access-Control-Allow-Credentials', 'true')
-            ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-            ->header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, X-Token-Auth, Authorization x-xsrf-token, domain ');
+        try {
+            return $next($request)
+                ->header('Access-Control-Allow-Origin', $referrer)
+                ->header('Access-Control-Allow-Credentials', 'true')
+                ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+                ->header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, X-Token-Auth, Authorization x-xsrf-token, domain ');
+        } catch (Throwable) {
+            return $next($request);
+        }
     }
 }

@@ -3,12 +3,14 @@
 namespace FoldingMoney\Domains\Tickers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use FoldingMoney\Jobs\ImportTickerData;
 use Katyusha\Infrastructure\Eloquent\Model;
 use Overtrue\LaravelFollow\Traits\Followable;
 use FoldingMoney\Domains\Portfolios\Portfolio;
 use Jenssegers\Mongodb\Eloquent\HybridRelations;
 use Katyusha\Infrastructure\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use FoldingMoney\Database\Factories\TickerFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -56,14 +58,22 @@ class Ticker extends Model {
         return TickerFactory::new();
     }
 
+    public function logo(): Attribute {
+        return Attribute::make(get: static fn (?string $value) => config('app.url').'/applications/folding-money/logos/'.$value);
+    }
+
     public static function getByTicker(string $ticker): self {
         return self::where('ticker', mb_strtoupper($ticker))->first();
     }
 
     public static function createUpdatingJobs(): void {
-        foreach (self::query()->orderByDesc('last_api_fetch')->get() as $item) {
+        foreach (self::query()->orderByDesc('market_cap')->limit(1000)->get() as $item) {
             ImportTickerData::dispatch($item);
         }
+    }
+
+    public function followers(): BelongsToMany {
+        return $this->belongsToMany(User::class, 'finance.ticker_followers');
     }
 
     public function portfolios(): BelongsToMany {

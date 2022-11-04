@@ -1,0 +1,43 @@
+:root {
+  --font-heading: 'Baloo 2', sans-serif;
+  --font: 'Open Sans', sans-serif;
+
+  --app-color:#6c26e7;
+
+  --color-purple:#6c26e7;
+}
+
+
+body, html, p, span, div {
+  font-family: var(--font);
+  font-size: 14px;
+}
+
+
+body, html {
+  color:#000;
+}
+
+h1, h2,
+h1 *, h2 * {
+  font-family: var(--font-heading);
+}
+
+
+/* Typography */
+
+h1 {
+
+}
+
+h2, h2 * {
+  font-weight: bold;
+  font-size: 1.6rem;
+  margin-bottom: .8rem;
+}
+
+
+h3, h3 * {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}

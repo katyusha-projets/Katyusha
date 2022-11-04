@@ -34,8 +34,8 @@ class Kernel extends HttpKernel {
      * These middleware are run during every request to your application.
      */
     protected  $middleware = [
-        Cors::class,
         // \App\Http\Middleware\TrustHosts::class,
+        Cors::class,
         TrustProxies::class,
         HandleCors::class,
         PreventRequestsDuringMaintenance::class,
@@ -73,6 +73,7 @@ class Kernel extends HttpKernel {
      * These middleware may be assigned to groups or used individually.
      */
     protected  $routeMiddleware = [
+        'cors'             => Cors::class,
         'auth'             => Authenticate::class,
         'auth.basic'       => AuthenticateWithBasicAuth::class,
         'auth.session'     => AuthenticateSession::class,
