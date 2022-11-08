@@ -90,6 +90,38 @@ class ParsedFinancialRecords implements Arrayable {
         $this->generateCollections();
     }
 
+    public function charts(): array {
+        return (new FinancialRecordsCharts($this))->toArray();
+    }
+
+    public function keyData(): KeyFinancialData {
+        return new KeyFinancialData(
+            balanceSheetStatement: $this->balanceSheetStatement,
+            revenueProductSegmentation: $this->revenueProductSegmentation,
+            balanceSheetStatementGrowth: $this->balanceSheetStatementGrowth,
+            enterpriseValues: $this->enterpriseValues,
+            incomeStatementGrowth: $this->incomeStatementGrowth,
+            keyMetrics: $this->keyMetrics,
+            financialGrowth: $this->financialGrowth,
+            rating: $this->rating,
+            marketCapitalization: $this->marketCapitalization,
+            ratios: $this->ratios,
+        );
+    }
+
+    public function latestItems(): array {
+        $res = [];
+        foreach ($this as $k => $v) {
+            if ($k === 'data') {
+                continue;
+            }
+
+            $res[$k] = $v[0];
+        }
+
+        return $res;
+    }
+
     public function toArray(): array {
         $res = [];
         foreach ($this as $k => $v) {

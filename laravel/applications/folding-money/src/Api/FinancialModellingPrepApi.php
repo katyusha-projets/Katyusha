@@ -97,7 +97,6 @@ class FinancialModellingPrepApi {
             FinancialDataEnum::FINANCIAL_REPORTS_DATES                              => 'v4/financial-reports-dates',
             FinancialDataEnum::SCORE                                                => 'v4/score',
 
-
             FinancialDataEnum::INCOME_STATEMENT                          => 'income-statement',
             FinancialDataEnum::BALANCE_SHEET_STATEMENT                   => 'balance-sheet-statement',
             FinancialDataEnum::CASH_FLOW_STATEMENT                       => 'cash-flow-statement',

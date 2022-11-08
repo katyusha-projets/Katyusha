@@ -27,8 +27,16 @@ class TickerController extends Controller {
         return (new ExcelExporter($data))->download($ticker.'.xlsx', Excel::XLSX);
     }
 
+    public function latestData(string $ticker): JsonResponse {
+        return response()->json(FinancialRecords::fetch($ticker)->keyData()->latestValues());
+    }
+
     public function data(string $ticker): JsonResponse {
-        return response()->json(FinancialRecords::fetch($ticker));
+        return response()->json(FinancialRecords::fetch($ticker)->keyData());
+    }
+
+    public function dataYearGrouping(string $ticker): JsonResponse {
+        return response()->json(FinancialRecords::fetch($ticker)->keyData()->groupByYear());
     }
 
     public function show(string $ticker): JsonResponse {

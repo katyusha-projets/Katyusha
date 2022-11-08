@@ -16,6 +16,8 @@ Route::prefix('user')->controller(UserController::class)->group(static function 
 
 Route::prefix('ticker')->controller(TickerController::class)->group(static function () {
     Route::get('data/{ticker}', 'data');
+    Route::get('data/{ticker}/year', 'dataYearGrouping');
+    Route::get('latest/{ticker}', 'latestData');
     Route::prefix('{id}')->group(static function () {
         Route::get('set-user-portfolios', 'setCurrentUserPortfolios');
         Route::get('follow', 'follow');

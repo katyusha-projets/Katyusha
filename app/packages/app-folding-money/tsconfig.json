@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.packages.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "baseUrl": "./",
+    "paths": {
+      "~/": ["src"],
+      "@app/common": ["../common/src"],
+      "@app/vue": ["../vue/src"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/__tests__/*", "**/__e2e__/*"],
+  "references": [
+    { "path": "../vue" }
+  ]
+}

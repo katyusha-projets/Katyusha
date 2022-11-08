@@ -3,8 +3,6 @@
 namespace FoldingMoney\Controllers;
 
 use Illuminate\Http\Request;
-use Modules\Profiles\Profile;
-use Modules\Sessions\Session;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 use Psr\Container\NotFoundExceptionInterface;

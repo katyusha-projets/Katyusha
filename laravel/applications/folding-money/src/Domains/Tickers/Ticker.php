@@ -2,6 +2,7 @@
 
 namespace FoldingMoney\Domains\Tickers;
 
+use stdClass;
 use Carbon\Carbon;
 use App\Models\User;
 use FoldingMoney\Jobs\ImportTickerData;
@@ -43,8 +44,9 @@ class Ticker extends Model {
     use Followable;
     use HybridRelations;
 
-    protected $table = 'finance.tickers';
-    protected $dates = ['last_api_fetch'];
+    protected $table   = 'finance.tickers';
+    protected $dates   = ['last_api_fetch'];
+    protected $appends = ['financialData'];
 
     public function newEloquentBuilder($query): TickerBuilder {
         return new TickerBuilder($query);
@@ -56,6 +58,21 @@ class Ticker extends Model {
 
     protected static function newFactory(): TickerFactory {
         return TickerFactory::new();
+    }
+
+    public function getFinancialDataAttribute(): object {
+        $data     = new stdClass();
+        $keyData  = FinancialRecords::fetch($this->ticker)?->keyData();
+
+        if (!$keyData) {
+            return $data;
+        }
+
+        $data->all    = $keyData->toArray();
+        $data->latest = $keyData->latestValues();
+        $data->byYear = $keyData->groupByYear();
+
+        return $data;
     }
 
     public function logo(): Attribute {

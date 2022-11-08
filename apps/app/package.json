@@ -1,0 +1,23 @@
+{
+  "type": "module",
+  "private": true,
+
+  "dependencies": {
+    "@capacitor/app": "4.1.0",
+    "@capacitor/core": "4.4.0",
+    "@capacitor/haptics": "4.0.1",
+    "@capacitor/ios": "4.4.0",
+    "@capacitor/keyboard": "4.0.1",
+    "@capacitor/status-bar": "4.0.1",
+    "@stripe/stripe-js": "^1.35.0",
+    "@takuma-ru/vue-swipe-modal": "^4.0.0",
+    "apexcharts": "^3.36.0",
+    "core-js": "^3.6.5",
+    "lodash": "^4.17.21"
+
+  },
+  "devDependencies": {
+
+
+  }
+}

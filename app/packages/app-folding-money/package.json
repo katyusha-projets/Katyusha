@@ -1,0 +1,16 @@
+{
+  "name": "@app/folding-money",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "vite-ssr build",
+    "dev": "vite --port 3333 --host",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@app/framework": "*",
+    "@app/vue": "*"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./packages",
     "module": "ESNext",
     "target": "ESNext",
     "lib": ["DOM", "ESNext"],
@@ -22,7 +22,9 @@
       "vite-plugin-vue-layouts/client"
     ],
     "paths": {
-      "~/*": ["src/*"]
+      "@config/*": ["config/src/*"],
+      "@framework/*": ["framework/src/*"],
+      "@vue/*": ["vue/src/*"]
     }
   },
   "exclude": ["dist", "node_modules", "cypress"]

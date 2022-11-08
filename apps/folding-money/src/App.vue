@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import importBootstrap from '~/app/Bootstrap'
-
-// Bootstrap.app()
-</script>
-
 <template>
   <Suspense>
     <RouterView />

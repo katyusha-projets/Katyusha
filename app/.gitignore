@@ -4,6 +4,6 @@
 *.local
 dist
 dist-ssr
-node_modules
+../apps/app/node_modules
 .idea/
 *.log
