@@ -16,5 +16,4 @@ export interface ISession extends IUser {
 }
 
 export interface IProfile extends IUser {
-
 }

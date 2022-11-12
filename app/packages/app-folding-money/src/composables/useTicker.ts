@@ -1,7 +1,3 @@
-import UserApi from "~/app/api/UserApi";
-import {IUser} from "~/app/interfaces/UserInterfaces";
-import PortfolioApi from "~/app/api/PortfolioApi";
-import {IPortfolio} from "~/app/interfaces/PortfolioInterfaces";
 import TickerApi from "~/app/api/TickerApi";
 import _ from 'lodash'
 import {ITicker} from "~/app/interfaces/TickerInterfaces";
@@ -15,7 +11,6 @@ export const useTicker = () => {
   const loadTicker = async (_ticker: string): Promise<void> => {
     ticker.value = await api.get(_ticker)
   }
-
 
   const isCurrentUserFollowing = computed(() => {
     if(!ticker.value || !session.user) return false

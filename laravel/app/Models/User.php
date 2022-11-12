@@ -38,20 +38,20 @@ class User extends Authenticatable {
     protected $table     = 'users';
     protected $fillable  = ['name', 'email', 'mobile_country_code', 'mobile', 'address', 'city', 'zip', 'country'];
 
-//    public static function loginOrRegister(int $mobileNumber, int $loginCode): static {
-//        if (!$customer = static::where('mobile', $mobileNumber)->where('login_code', $loginCode)->first()) {
-//            $customer             = new static();
-//            $customer->mobile     = $mobileNumber;
-//            $customer->login_code = $loginCode;
-//        }
-//
-//        if ($session = Session::loadFromRequest()) {
-//            $session->customer_id = $customer->id;
-//            $session->save();
-//        }
-//
-//        return $customer;
-//    }
+    public static function loginOrRegister(int $mobileNumber, int $loginCode): static {
+        if (!$user = static::where('mobile', $mobileNumber)->where('login_code', $loginCode)->first()) {
+            $user             = new static();
+            $user->mobile     = $mobileNumber;
+            $user->login_code = $loginCode;
+        }
+
+        if ($session = Session::loadFromRequest()) {
+            $session->customer_id = $user->id;
+            $session->save();
+        }
+
+        return $user;
+    }
 
     public static function me(): ?static {
         return Auth::user();

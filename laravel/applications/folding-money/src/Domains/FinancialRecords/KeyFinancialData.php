@@ -88,10 +88,19 @@ class KeyFinancialData implements Arrayable {
     }
 
     public function latestValues(): object {
-        return $this->groupByYear()->sortByDesc('year')->first();
+        return $this->_groupByYear()->sortByDesc('year')->first();
     }
 
-    public function groupByYear(): Collection {
+    public function groupByYear(): object {
+        $res = new stdClass();
+        foreach ($this->_groupByYear() as $item) {
+            $res->{$item->year} = $item;
+        }
+
+        return $res;
+    }
+
+    public function _groupByYear(): Collection {
         $groupByYearFn = static function (FinancialCollection $collection) {
             $years = [];
             foreach ($collection->groupBy('year') as $yearGrouped) {

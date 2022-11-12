@@ -6,9 +6,9 @@
     "rootDir": "src",
     "baseUrl": "./",
     "paths": {
-      "~/": ["src"],
-      "@app/common": ["../common/src"],
-      "@app/vue": ["../vue/src"]
+      "~/*": ["src/*"],
+      "@app/common/*": ["../common/src/*"],
+      "@app/vue/*": ["../vue/src/*"]
     }
   },
   "include": ["src/**/*"],

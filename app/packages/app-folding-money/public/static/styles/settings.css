@@ -18,9 +18,14 @@ body, html {
   color:#000;
 }
 
+
 h1, h2,
 h1 *, h2 * {
   font-family: var(--font-heading);
+}
+
+img {
+  border:none;
 }
 
 

@@ -1,5 +1,5 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
-import {ISession, IUser} from "~/app/interfaces/UserInterfaces";
+import {IUser} from "~/app/interfaces/UserInterfaces";
 
 export const useSessionStore = defineStore('session', () => {
   const user = ref<IUser|null>(null)

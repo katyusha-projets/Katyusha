@@ -35,7 +35,7 @@ const config: IAppConfig = {
       items: [
         { id: 'stocks', icon: 'chart-mixed', title: 'Stocks', modalKey: 'stocksOverview' },
         // { id: 'xxx', icon: 'bolt', title: '', modalKey: '' },
-        { id: 'xxxxx', icon: 'user', title: 'Account', modalKey: 'stocksUserProfile' },
+        { id: 'profile', icon: 'user', title: 'Account', modalKey: 'profile' },
         { id: 'xxxxx', icon: 'gem', title: 'Premium', modalKey: 'stockPremiumMembership' }
       ]
     }

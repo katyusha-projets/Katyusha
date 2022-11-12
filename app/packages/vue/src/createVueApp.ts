@@ -22,6 +22,7 @@ export const createVueApp = (params: ICreateVueApp) => viteSSR(
   params.App,
   { routes: params.routes },
   (ctx) => {
+    // @ts-ignore
     Object.values(import.meta.glob<{ install: any }>('./plugins/*.ts', { eager: true })).forEach(i => i.install?.(ctx))
   }
 )
